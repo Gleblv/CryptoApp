@@ -1,0 +1,36 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header {
+  height: auto;
+}
+
+.profile-button {
+  position: absolute;
+  top: 35px;
+  left: 2%;
+  height: 3em;
+  width: 8em;
+  background-color: #3d5a80;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 15px 15px 30px rgba(0,0,0, .15);
+  color: white;
+}
+
+.difference {
+  position: absolute;
+  top: 35px;
+  right: 2%;
+  height: 4em;
+  width: 20em;
+  background-color: #3d5a80;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 15px 15px 30px rgba(0,0,0, .15);
+  color: white;
+}

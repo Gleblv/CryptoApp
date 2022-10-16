@@ -1,0 +1,14 @@
+.coin-list {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top: 35px;
+    left: 25%;
+    height: auto;
+    width: 50%;
+    padding: 25px;
+    background-color: #3d5a80;
+    border-radius: 4px;
+    box-shadow: 15px 15px 30px rgba(0,0,0, .15);
+    color: #fff;
+}
