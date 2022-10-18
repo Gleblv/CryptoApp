@@ -1,16 +1,53 @@
-import CoinInf from '../CoinInf/CoinInf';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+
+import useCoinService from "../../services/CoinService";
 
 import './coinsList.css';
 
 const CoinsList = () => {
+
+    const {getCoinsList} = useCoinService();
+
+    const [coins, setCoins] = useState([]);
+
+    useEffect(() => {
+        getCoinsList()
+            .then(setCoins);
+    }, []);
+
+    const getList = () => {
+        const list = coins.map((item, i) => {
+            return (
+                <tr className='coin-info'>
+                    <td>{item.name}</td>
+                    <td>{item.symbol}</td>
+                    <td>{item.priceUsd}</td>
+                    <td><button className='addBtn'>+</button></td>
+                </tr>
+            )
+        })
+
+        return list;
+    }
+
+    const coinsList = getList();
+
     return (
-        <ul className='inf-list-coin'>
-            <CoinInf/>
-            <CoinInf/>
-            <CoinInf/>
-            <CoinInf/>
-            <CoinInf/>
-        </ul>
+        <table className='all-coin-list'>
+            <caption>Information of coins</caption>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Symbol</td>
+                    <td>Price (USD)</td>
+                    <td>Add</td>
+                </tr>
+            </thead>
+            <tbody>
+                {coinsList}
+            </tbody>
+        </table>
     )
 }
 
