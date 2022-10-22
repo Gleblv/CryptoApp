@@ -5,7 +5,7 @@ import useCoinService from "../../services/CoinService";
 
 import './coinsList.css';
 
-const CoinsList = () => {
+const CoinsList = (props) => {
 
     const {getCoinsList} = useCoinService();
 
@@ -19,11 +19,11 @@ const CoinsList = () => {
     const getList = () => {
         const list = coins.map((item, i) => {
             return (
-                <tr className='coin-info'>
+                <tr className='coin-info' key={i}>
                     <td>{item.name}</td>
                     <td>{item.symbol}</td>
                     <td>{item.priceUsd}</td>
-                    <td><button className='addBtn'>+</button></td>
+                    <td><button className='addBtn' onClick={() => {props.getSelectedCoin(item.id)}}>+</button></td>
                 </tr>
             )
         })

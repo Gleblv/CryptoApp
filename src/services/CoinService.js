@@ -14,13 +14,28 @@ const useCoinService = () => {
   }
 
   const getCoinsList = async () => {
-    const res = await fetch("https://api.coincap.io/v2/assets?limit=10");
-    const data = await res.json();
+    try {
+      const res = await fetch("https://api.coincap.io/v2/assets?limit=10");
+      const data = await res.json();
 
-    return data.data;
+      return data.data;
+    } catch {
+      throw new Error("Error");
+    }
   }
 
-  return {getCommonCoins, getCoinsList};
+  const getCoinById = async (id) => {
+    try {
+      const res = await fetch(`https://api.coincap.io/v2/assets/${id}`);
+      const data = await res.json();
+
+      return(data.data);
+    } catch {
+      throw new Error("Error");
+    }
+  }
+
+  return {getCommonCoins, getCoinsList, getCoinById};
 }
 
 export default useCoinService;

@@ -3,7 +3,6 @@
     width: 60%;
     top: 30%;
     left: 20%;
-    list-style-type: none;
     padding-left: 0;
     background-color: #3d5a80;
     border-radius: 4px;
@@ -17,5 +16,8 @@ th, td {
 }
 
 .addBtn {
-    margin-bottom: 7.5px;
+    margin-bottom: 10px;
+    border-radius: 0.5em;
+    width: 27.5px;
+    height: 27.5px;
 }
