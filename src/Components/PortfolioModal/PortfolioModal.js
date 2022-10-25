@@ -16,39 +16,42 @@ const ProfileModal = (props) => {
         .then(addToLocalStorage);
     }, [props.coinId]);
 
+    useEffect(() => {
+        
+    }, [props.coinId]);
+
     const closeModal = () => { // функция для закрытия модального окна
         document.querySelector(".modal").style.display = "none";
     }
 
-    const addToLocalStorage = () => {
-        coinList.forEach((item, i) => {
-            if (item !== undefined && item !== null) {
-                localStorage.setItem(JSON.stringify(i), JSON.stringify(item));
+    const addToLocalStorage = () => { // добавление элементов в localStorage
+        coinList.forEach((coin) => {
+            if (coin !== null && coin !== undefined) {
+                localStorage.setItem(JSON.stringify(coin.id), JSON.stringify(coin));
             }
         })
     }
 
-    const deleteCoin = (deleteCoinId) => {
-        coinList.forEach((coin, i) => {
-            if (coin !== null && coin !== undefined && coin.id === deleteCoinId) {
-                setCoinList(coinList => coinList.splice(i, 1));
+    // const getOfLocalStorage = () => { // взятие элементов из localStorage
+    //     for(let key in localStorage) {
+    //         if (!localStorage.hasOwnProperty(key)) {
+    //           continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+    //         }
+    //         coinsOfLocalStorage.push(JSON.parse(localStorage.getItem(key)));
+    //     }
+    // }
+
+    const deleteCoin = (deleteCoinId) => { // удаление элементов из списка
+        setCoinList(coinList => coinList.filter(coin => {
+            if (coin !== null & coin !== undefined) {
+                return(coin.id !== deleteCoinId)
             }
-        });
+        }));
+
+        localStorage.removeItem(JSON.stringify(deleteCoinId));
     }
 
     const getList = () => { // формируем список из элементов массива
-        for(let key in localStorage) {  // берём данные из localStorage
-            if (!localStorage.hasOwnProperty(key)) {
-              continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
-            }
-
-            coinList.forEach((item) => {
-                if (item !== null && item !== undefined && item.id !== localStorage.getItem(key).id) {
-                    coinList.push(localStorage.getItem(key));
-                }
-            })
-        }
-
         // eslint-disable-next-line array-callback-return
         const list = coinList.map((item) => {
             if (item !== null && item !== undefined) {
