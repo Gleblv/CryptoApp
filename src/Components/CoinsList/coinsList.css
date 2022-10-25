@@ -1,8 +1,9 @@
 .all-coin-list {
     position: absolute;
-    width: 60%;
+    width: 950px;
     top: 30%;
-    left: 20%;
+    left: 20.5%;
+    padding: 25px;
     padding-left: 0;
     background-color: #3d5a80;
     border-radius: 4px;

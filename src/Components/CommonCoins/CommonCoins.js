@@ -31,12 +31,12 @@ const CoinList = () => {
     const coinsList = getList();
 
     return (
-        <>
+        <div className="common-coins">
             <div className="title">Commons Coins</div>
             <ul className="coin-list">
                 {coinsList}
             </ul>
-        </>
+        </div>
     )
 }
 

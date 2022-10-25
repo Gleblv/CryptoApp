@@ -1,8 +1,9 @@
 .App {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
+  height: 1100px;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-header {
@@ -13,24 +14,24 @@
   position: absolute;
   top: 35px;
   left: 2%;
-  height: 3em;
-  width: 8em;
-  background-color: #3d5a80;
-  border: none;
+  height: 50px;
+  width: 180px;
+  background-color: transparent;
   border-radius: 0.5em;
-  box-shadow: 15px 15px 30px rgba(0,0,0, .15);
-  color: white;
+  border-color: #3d5a80;
+  border-width: 1.5px;
+  color: rgb(0, 0, 0);
 }
 
 .difference {
   position: absolute;
   top: 35px;
   right: 2%;
-  height: 4em;
-  width: 20em;
-  background-color: #3d5a80;
-  border: none;
+  height: 50px;
+  width: 180px;
+  background-color: transparent;
   border-radius: 0.5em;
-  box-shadow: 15px 15px 30px rgba(0,0,0, .15);
-  color: white;
+  border-color: #3d5a80;
+  border-width: 1.5px;
+  color: rgb(0, 0, 0);
 }

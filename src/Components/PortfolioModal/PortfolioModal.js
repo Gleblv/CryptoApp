@@ -42,6 +42,7 @@ const ProfileModal = (props) => {
     // }
 
     const deleteCoin = (deleteCoinId) => { // удаление элементов из списка
+        // eslint-disable-next-line array-callback-return
         setCoinList(coinList => coinList.filter(coin => {
             if (coin !== null & coin !== undefined) {
                 return(coin.id !== deleteCoinId)
