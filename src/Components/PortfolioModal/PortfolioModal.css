@@ -14,29 +14,31 @@
   
   /* Модальное содержание/коробка */
   .modal-content {
-    background-color: #3d5a80;
+    background-color: #0D1821;
+    color: #F1FFE7;
     display: flex;
     justify-content: space-between;
-    border-radius: 4px;
-    box-shadow: 15px 15px 30px rgba(0,0,0, .15);
-    height: 50%;
+    border-radius: 0.5em;
+    height: 70vh;
+    width: 70vw;
     margin: 15% auto; /* 15% сверху и по центру */
-    padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Может быть больше или меньше, в зависимости от размера экрана */
   }
   
   /* Кнопка закрытия */
   .close {
     color: #aaa;
+    height: 5vh;
+    width: 1.5vw;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-bottom: auto;
   }
   
   .close:hover,
   .close:focus {
-    color: black;
+    color: rgb(219, 18, 18);
     text-decoration: none;
     cursor: pointer;
   }
@@ -48,4 +50,23 @@
 td, th {
   padding: 5px;
   text-align: center;
+}
+
+.delete-crypto {
+  width: 4vw;
+  height: 4vh;
+  background-color: #157A6E; 
+  color: #F1FFE7;
+  font-size: 100%;
+  border-radius: 0.5em;
+}
+
+.delete-crypto:hover {
+  color: rgb(219, 18, 18);
+  cursor: pointer;
+}
+
+.delete-crypto:active {
+  background-color: #136e64;
+  color:rgb(173, 15, 15);
 }

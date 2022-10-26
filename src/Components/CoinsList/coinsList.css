@@ -1,24 +1,37 @@
 .all-coin-list {
-    position: absolute;
-    width: 950px;
-    top: 30%;
-    left: 20.5%;
-    padding: 25px;
-    padding-left: 0;
-    background-color: #3d5a80;
-    border-radius: 4px;
-    box-shadow: 15px 15px 30px rgba(0,0,0, .15);
-    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5vh;
+    padding: 1%;
+    width: 65vw;
+    height: auto;
+    background-color: #0D1821;
+    color: #F1FFE7;
+    border-radius: 0.5em;
+    box-shadow: 10px 10px 30px rgb(163, 163, 163);
+    line-height: 1.5em;
 }
 
 th, td {
-    padding: 5px;
     text-align: center;
 }
 
 .addBtn {
-    margin-bottom: 10px;
-    border-radius: 0.5em;
-    width: 27.5px;
-    height: 27.5px;
+    width: 3vw;
+    height: 4vh;
+    font-size: 100%;
+    border-radius: 10em;
+    color: #F1FFE7;
+    background-color: #157A6E;
+}
+
+.addBtn:hover {
+    color: #53e445;
+    cursor: pointer;
+}
+
+.addBtn:active {
+    color: #45bb3a;
+    background-color: #106359;
+    cursor: pointer;
 }

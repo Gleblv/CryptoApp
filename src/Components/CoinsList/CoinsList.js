@@ -35,7 +35,7 @@ const CoinsList = (props) => {
 
     return (
         <table className='all-coin-list'>
-            <caption>Information of coins</caption>
+            <caption className="coin-list-title">Information of coins</caption>
             <thead>
                 <tr>
                     <td>Name</td>

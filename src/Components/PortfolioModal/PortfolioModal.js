@@ -16,9 +16,16 @@ const ProfileModal = (props) => {
         .then(addToLocalStorage);
     }, [props.coinId]);
 
-    useEffect(() => {
-        
-    }, [props.coinId]);
+    // useEffect(() => {
+    //     for(let key in localStorage) {
+    //         if (!localStorage.hasOwnProperty(key)) {
+    //             continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+    //         }
+
+
+    //         setCoinList(coinList => [...coinList, JSON.parse(localStorage.getItem(key))]);
+    //     }
+    // }, []);
 
     const closeModal = () => { // функция для закрытия модального окна
         document.querySelector(".modal").style.display = "none";
@@ -32,15 +39,6 @@ const ProfileModal = (props) => {
         })
     }
 
-    // const getOfLocalStorage = () => { // взятие элементов из localStorage
-    //     for(let key in localStorage) {
-    //         if (!localStorage.hasOwnProperty(key)) {
-    //           continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
-    //         }
-    //         coinsOfLocalStorage.push(JSON.parse(localStorage.getItem(key)));
-    //     }
-    // }
-
     const deleteCoin = (deleteCoinId) => { // удаление элементов из списка
         // eslint-disable-next-line array-callback-return
         setCoinList(coinList => coinList.filter(coin => {
@@ -49,7 +47,9 @@ const ProfileModal = (props) => {
             }
         }));
 
-        localStorage.removeItem(JSON.stringify(deleteCoinId));
+        if (localStorage.getItem(deleteCoin)) {
+            localStorage.removeItem(JSON.stringify(deleteCoinId));
+        }
     }
 
     const getList = () => { // формируем список из элементов массива
@@ -61,7 +61,7 @@ const ProfileModal = (props) => {
                         <td>{item.name}</td>
                         <td>{item.symbol}</td>
                         <td>{item.priceUsd}</td>
-                        <td><button onClick={() => {deleteCoin(item.id)}} className='delete-crypto'>-</button></td>
+                        <td><button onClick={() => {deleteCoin(item.id)}} className='delete-crypto'>—</button></td>
                     </tr>
                 )
             }
