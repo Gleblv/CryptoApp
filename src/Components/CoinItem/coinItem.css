@@ -1,0 +1,38 @@
+.coins-list-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 5vh;
+    margin: 0.5%;
+}
+
+.active {
+    height: 20vh;
+}
+
+.coin-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coin-btn-content {
+    width: 5vw;
+    height: 60%;
+    border-radius: 0.5em;
+    background-color: #157A6E;
+    color: #F1FFE7;
+}
+
+.coin-btn-content:hover {
+    cursor: pointer;
+}
+
+.coin-btn-content:active {
+    background-color: #0d4d45;
+}
+
+.coin-content {
+    width: 100%;
+    height: 100%;
+}

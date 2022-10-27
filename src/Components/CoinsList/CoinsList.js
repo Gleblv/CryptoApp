@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
+import CoinItem from '../CoinItem/CoinItem';
 import useCoinService from "../../services/CoinService";
 
 import './coinsList.css';
 
-const CoinsList = (props) => {
+const CoinsList = ({getSelectedCoin}) => {
 
     const {getCoinsList} = useCoinService();
 
@@ -17,14 +18,15 @@ const CoinsList = (props) => {
     }, []);
 
     const getList = () => {
-        const list = coins.map((item, i) => {
+        const list = coins.map((item) => {
             return (
-                <tr className='coin-info' key={i}>
-                    <td>{item.name}</td>
-                    <td>{item.symbol}</td>
-                    <td>{item.priceUsd}</td>
-                    <td><button className='addBtn' onClick={() => {props.getSelectedCoin(item.id)}}>+</button></td>
-                </tr>
+                <CoinItem 
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    symbol={item.symbol}
+                    price={item.priceUsd}
+                    getSelectedCoin={getSelectedCoin}/>
             )
         })
 
@@ -34,20 +36,9 @@ const CoinsList = (props) => {
     const coinsList = getList();
 
     return (
-        <table className='all-coin-list'>
-            <caption className="coin-list-title">Information of coins</caption>
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>Symbol</td>
-                    <td>Price (USD)</td>
-                    <td>Add</td>
-                </tr>
-            </thead>
-            <tbody>
-                {coinsList}
-            </tbody>
-        </table>
+        <div className="coins-list">
+            {coinsList}
+        </div>
     )
 }
 
