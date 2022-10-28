@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './coinItem.css';
 
-const CoinItem = ({id, name, symbol, price, getSelectedCoin}) => {
+const CoinItem = ({id, name, symbol, price, supply, maxSupply, changePercent24Hr, getSelectedCoin}) => {
     const [isActive, setIsActive] = useState(false);
 
     let itemStyle = "coins-list-item"
@@ -27,16 +27,23 @@ const CoinItem = ({id, name, symbol, price, getSelectedCoin}) => {
                 </div>
                 <button className='coin-btn-content' onClick={() => setIsActive(!isActive)}>{isActive ? "Hide" : "More"}</button>
             </div>
-            {isActive ? <Content getSelectedCoin={getSelectedCoin} id={id}/> : null}
+            {isActive ? <Content getSelectedCoin={getSelectedCoin} id={id} supply={supply} maxSupply={maxSupply} changePercent24Hr={changePercent24Hr}/> : null}
         </div>
     )
 }
 
-const Content = ({getSelectedCoin, id}) => {
+const Content = ({getSelectedCoin, id, supply, maxSupply, changePercent24Hr}) => {
     return (
         <div className='coin-content'>
-            <div className='info-of-coin'>Some Text</div>
-            <button className='coin-add' onClick={() => getSelectedCoin(id)}>Add coin</button>
+            <div className='info-of-coin'>
+                <div className='suply'>Supply: {supply}</div>
+                <div className='max-suply'>Max supply: {maxSupply}</div>
+                <div className='change-percent'>Percent change for 24 hours: {changePercent24Hr}</div>
+            </div>
+            <div className='controls'>
+                <button className='coin-add-btn' onClick={() => getSelectedCoin(id)}>Add coin</button>
+                <button className='to-page-btn'>Go to page</button>
+            </div>
         </div>
     )
 }
