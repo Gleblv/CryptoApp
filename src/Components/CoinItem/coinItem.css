@@ -64,10 +64,26 @@
     border-radius: 0.5em;
 }
 
+.coin-add-btn:hover {
+    cursor: pointer;
+}
+
+.coin-add-btn:active {
+    background-color: #0e5149;
+}
+
 .to-page-btn {
     width: 5vw;
     height: 3vh;
     background-color: #157A6E;
     color: #F1FFE7;
     border-radius: 0.5em;
+}
+
+.to-page-btn:hover {
+    cursor: pointer;
+}
+
+.to-page-btn:active {
+    background-color: #0e5149;
 }

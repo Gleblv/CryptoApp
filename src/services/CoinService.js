@@ -35,7 +35,18 @@ const useCoinService = () => {
     }
   }
 
-  return {getCommonCoins, getCoinsList, getCoinById};
+  const getCoinHistory = async (id) => {
+    try {
+      const res = await fetch(`api.coincap.io/v2/assets/${id}/history?interval=d1`);
+      const data = await res.json();
+
+      return (data.data);
+    } catch {
+      throw new Error("Error");
+    }
+  }
+
+  return {getCommonCoins, getCoinsList, getCoinById, getCoinHistory};
 }
 
 export default useCoinService;

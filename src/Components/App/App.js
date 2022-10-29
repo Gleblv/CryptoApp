@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CommonCoins from '../CommonCoins/CommonCoins';
 import CoinList from '../CoinsList/CoinsList';
 import ProfileModal from '../PortfolioModal/PortfolioModal'
+import CoinInfo from '../CoinInfo/CoinInfo';
 
 import { Button } from 'react-bootstrap';
 
@@ -27,8 +28,9 @@ function App() {
         <Button className='difference' variant="outline-dark" size='lg'>Difference</Button>
       </header>
       <main>
-        <CoinList getSelectedCoin={getSelectedCoin}/>
-        <ProfileModal coinId={selectedCoin}/>
+        {/* <CoinList getSelectedCoin={getSelectedCoin}/>
+        <ProfileModal coinId={selectedCoin}/> */}
+        <CoinInfo coinId={selectedCoin}/>
       </main>
     </div>
   );

@@ -36,13 +36,13 @@ const Content = ({getSelectedCoin, id, supply, maxSupply, changePercent24Hr}) =>
     return (
         <div className='coin-content'>
             <div className='info-of-coin'>
-                <div className='suply'>Supply: {supply}</div>
-                <div className='max-suply'>Max supply: {maxSupply}</div>
-                <div className='change-percent'>Percent change for 24 hours: {changePercent24Hr}</div>
+                <div className='suply'>Supply: {supply ? supply : "Information absent"}</div>
+                <div className='max-suply'>Max supply: {maxSupply ? maxSupply : "Information absent"}</div>
+                <div className='change-percent'>Percent change for 24 hours: {changePercent24Hr ? changePercent24Hr : "Information absent"}</div>
             </div>
             <div className='controls'>
                 <button className='coin-add-btn' onClick={() => getSelectedCoin(id)}>Add coin</button>
-                <button className='to-page-btn'>Go to page</button>
+                <button className='to-page-btn' onClick={() => getSelectedCoin(id)}>Go to page</button>
             </div>
         </div>
     )
