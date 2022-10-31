@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import CommonCoins from '../CommonCoins/CommonCoins';
 import CoinList from '../CoinsList/CoinsList';
@@ -10,10 +12,10 @@ import { Button } from 'react-bootstrap';
 import './App.css';
 
 function App() {
-  const [selectedCoin, setSelectedCoin] = useState(null);
+  const [selectedCoinId, setSelectedCoinId] = useState(null);
 
   const getSelectedCoin = (id) => { // получаем id криптовалюты которую хотим добавить в profile из CoinList
-    setSelectedCoin(id);
+    setSelectedCoinId(id);
   }
 
   const openModal = () => {
@@ -21,18 +23,26 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Button className='profile-button' onClick={() => openModal()} variant="outline-dark" size='lg'>Profile</Button>
-        <CommonCoins/>
-        <Button className='difference' variant="outline-dark" size='lg'>Difference</Button>
-      </header>
-      <main>
-        {/* <CoinList getSelectedCoin={getSelectedCoin}/>
-        <ProfileModal coinId={selectedCoin}/> */}
-        <CoinInfo coinId={selectedCoin}/>
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Button className='profile-button' onClick={() => openModal()} variant="outline-dark" size='lg'>Profile</Button>
+          <CommonCoins/>
+          <Button className='difference' variant="outline-dark" size='lg'>Difference</Button>
+        </header>
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <CoinList getSelectedCoin={getSelectedCoin}/>
+              <ProfileModal coinId={selectedCoinId}/>
+            </Route>
+            <Route exact path="/coin">
+              <CoinInfo coinId={selectedCoinId}/>
+            </Route>
+          </Switch>
+        </main>
+      </div>
+    </Router>
   );
 }
 

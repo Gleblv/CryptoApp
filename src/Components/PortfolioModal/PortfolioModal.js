@@ -11,10 +11,20 @@ const ProfileModal = (props) => {
     const {getCoinById} = useCoinService();
 
     useEffect(() => {
+        updateInfo();
+    }, [props.coinId]);
+
+    const updateInfo = () => {
+        const {coinId} = props;
+
+        if (coinId === null || coinId === undefined) {
+            return;
+        }
+
         getCoinById(props.coinId)
         .then(coin => setCoinList(coinList => [...coinList, coin]))
         .then(addToLocalStorage);
-    }, [props.coinId]);
+    }
 
     // useEffect(() => {
     //     for(let key in localStorage) {
@@ -53,6 +63,7 @@ const ProfileModal = (props) => {
     }
 
     const getList = () => { // формируем список из элементов массива
+        console.log(coinList);
         // eslint-disable-next-line array-callback-return
         const list = coinList.map((item) => {
             if (item !== null && item !== undefined) {
@@ -64,6 +75,8 @@ const ProfileModal = (props) => {
                         <td><button onClick={() => {deleteCoin(item.id)}} className='delete-crypto'>—</button></td>
                     </tr>
                 )
+            } else {
+                return;
             }
         })
         

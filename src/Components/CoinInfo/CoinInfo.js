@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -9,26 +12,56 @@ import {
     Legend,
   } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { useEffect, useState } from 'react';
 
 import useCoinService from '../../services/CoinService';
 
 import './CoinInfo.css';
 
 const CoinInfo = ({coinId}) => {
-
     const {getCoinHistory, getCoinById} = useCoinService();
 
-    const [selectedCoin, setSelectedCoin] = useState();
     const [coinHistory, setCoinHistory] = useState();
+    const [coinData, setCoinData] = useState();
 
     useEffect(() => {
-        getCoinById(coinId)
-            .then(setSelectedCoin);
+        updateData();
+    }, []);
+
+    const updateData = () => {
+        if (coinId === null || coinId === undefined) {
+            return;
+        }
+
         getCoinHistory(coinId)
-            .then(setCoinHistory);
-    }, [coinId]);
-      
+            .then(onCoinHistory);
+
+        getCoinById(coinId)
+            .then(onCoinData);
+    }
+
+    const onCoinHistory = (data) => {
+        setCoinHistory(data);
+    }
+
+    const onCoinData = (data) => {
+        setCoinData(data);
+    }
+
+    const getLabelsForX = (arr) => {
+        return !arr ? null : arr.map(coin => {
+            return (coin.priceUsd);
+        })
+    }
+
+    const getLabelsForY = (arr) => {
+        return !arr ? null : arr.map(coin => {
+            let date = new Date(coin.date);
+            let months = date.getMonth();
+            let days = date.getDate();
+            return (`${days}.${months < 10 ? "0" + months : months}`);
+        })
+    }
+
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -39,28 +72,18 @@ const CoinInfo = ({coinId}) => {
         Legend
     );
       
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-            position: 'top',
-            },
-            title: {
-            display: false,
-            },
-        },
-    };
-      
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-      
+    const options = {};
+
     const data = {
-        labels,
+        labels: getLabelsForY(coinHistory),
         datasets: [
             {
-            label: 'Dataset 1',
-            data: ['10', '20', '30'],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            label: 'Price',
+            data: getLabelsForX(coinHistory),
+            borderColor: '#0D1821',
+            backgroundColor: '#0D1821',
+            color: '#F1FFE7',
+            fill: true
             }
         ],
     };

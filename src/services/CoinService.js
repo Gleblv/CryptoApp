@@ -18,7 +18,9 @@ const useCoinService = () => {
       const res = await fetch("https://api.coincap.io/v2/assets?limit=10");
       const data = await res.json();
 
-      return data.data;
+      if (data !== undefined && data !== null) {
+        return data.data;
+      }
     } catch {
       throw new Error("Error");
     }
@@ -29,7 +31,9 @@ const useCoinService = () => {
       const res = await fetch(`https://api.coincap.io/v2/assets/${id}`);
       const data = await res.json();
 
-      return(data.data);
+      if (data !== undefined && data !== null) {
+        return data.data;
+      }
     } catch {
       throw new Error("Error");
     }
@@ -37,10 +41,13 @@ const useCoinService = () => {
 
   const getCoinHistory = async (id) => {
     try {
-      const res = await fetch(`api.coincap.io/v2/assets/${id}/history?interval=d1`);
+      const res = await fetch(`https://api.coincap.io/v2/assets/${id}/history?interval=d1`);
       const data = await res.json();
 
-      return (data.data);
+      const coinHistory = data.data.splice(-11);
+      console.log(coinHistory);
+      
+      return (coinHistory);
     } catch {
       throw new Error("Error");
     }

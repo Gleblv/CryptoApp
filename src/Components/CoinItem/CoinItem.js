@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './coinItem.css';
 
@@ -42,7 +43,9 @@ const Content = ({getSelectedCoin, id, supply, maxSupply, changePercent24Hr}) =>
             </div>
             <div className='controls'>
                 <button className='coin-add-btn' onClick={() => getSelectedCoin(id)}>Add coin</button>
-                <button className='to-page-btn' onClick={() => getSelectedCoin(id)}>Go to page</button>
+                <button className='to-page-btn' onClick={() => getSelectedCoin(id)}>
+                    <Link to="/coin">Go to page</Link>
+                </button>
             </div>
         </div>
     )
