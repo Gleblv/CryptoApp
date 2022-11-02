@@ -32,6 +32,7 @@ const useCoinService = () => {
       const data = await res.json();
 
       if (data !== undefined && data !== null) {
+        console.log(data.data);
         return data.data;
       }
     } catch {
@@ -45,7 +46,6 @@ const useCoinService = () => {
       const data = await res.json();
 
       const coinHistory = data.data.splice(-11);
-      console.log(coinHistory);
       
       return (coinHistory);
     } catch {

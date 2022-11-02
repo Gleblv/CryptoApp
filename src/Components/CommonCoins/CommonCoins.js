@@ -20,7 +20,7 @@ const CoinList = () => {
             return (
                 <li key={i} className="coin-card">
                     <div className="logo">{item.symbol}</div>
-                    <div className="price">{item.rateUsd}</div>
+                    <div className="price">{parseFloat(item.rateUsd).toFixed(5)}</div>
                 </li>
             )
         });

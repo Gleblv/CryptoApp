@@ -34,12 +34,12 @@ function App() {
           <Switch>
             <Route exact path="/">
               <CoinList getSelectedCoin={getSelectedCoin}/>
-              <ProfileModal coinId={selectedCoinId}/>
             </Route>
             <Route exact path="/coin">
               <CoinInfo coinId={selectedCoinId}/>
             </Route>
           </Switch>
+          <ProfileModal coinId={selectedCoinId}/>
         </main>
       </div>
     </Router>

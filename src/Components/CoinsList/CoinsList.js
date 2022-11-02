@@ -25,11 +25,8 @@ const CoinsList = ({getSelectedCoin}) => {
                     id={item.id}
                     name={item.name}
                     symbol={item.symbol}
-                    price={item.priceUsd}
-                    getSelectedCoin={getSelectedCoin}
-                    supply={item.supply}
-                    maxSupply={item.maxSupply}
-                    changePercent24Hr={item.changePercent24Hr}/>
+                    price={parseFloat(item.priceUsd).toFixed(5)}
+                    getSelectedCoin={getSelectedCoin}/>
             )
         })
 

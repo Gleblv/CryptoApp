@@ -49,7 +49,7 @@ const CoinInfo = ({coinId}) => {
 
     const getLabelsForX = (arr) => {
         return !arr ? null : arr.map(coin => {
-            return (coin.priceUsd);
+            return (parseFloat(coin.priceUsd).toFixed(2));
         })
     }
 
@@ -58,9 +58,40 @@ const CoinInfo = ({coinId}) => {
             let date = new Date(coin.date);
             let months = date.getMonth();
             let days = date.getDate();
-            return (`${days}.${months < 10 ? "0" + months : months}`);
+            return (`${days}.${parseFloat(months) < 10 ? `0${months}` : months}`);
         })
     }
+
+    const getNameOfCoin = (obj) => {
+        return !obj ? null : coinData.name;
+    }
+
+    const getDataOfCoin = (obj) => {
+        return !obj ? null : (
+            <div className='info-on-coin-page'>
+                <div className='price-info-page сharacteristic'>
+                    <label className='price-label labels' htmlFor="price-value">Price</label> 
+                    <div className='price-value values' id="price-value">{parseFloat(obj.priceUsd).toFixed(2)}$</div>
+                </div>
+                <div className='change-info-page сharacteristic'>
+                    <label className='change-label labels' htmlFor="price-value">Change for 24h</label> 
+                    <div className='change-value values' id="price-value">{parseFloat(obj.changePercent24Hr).toFixed(2)}$</div>
+                </div>
+                <div className='supply-info-page сharacteristic'>
+                    <label className='supply-label labels' htmlFor="price-value">Supply</label> 
+                    <div className='supply-value values' id="price-value">{parseFloat(obj.supply).toFixed(2)}$</div>
+                </div>
+            </div>
+        )
+    }
+
+    const infoOfCoin = getDataOfCoin(coinData);
+
+    // const getDataOfCoin = (obj) => {
+    //     return !obj ? null : (
+
+    //     )
+    // }
 
     ChartJS.register(
         CategoryScale,
@@ -89,8 +120,10 @@ const CoinInfo = ({coinId}) => {
     };
 
     return (
-        <div className='info-graph'>
-            <Line data={data} options={options}/>
+        <div className='info-on-page'>
+            <div className='name-price-page'>{getNameOfCoin(coinData)}Price</div>
+            <Line className='schedule' data={data} options={options}/>
+            {infoOfCoin}
         </div>
     )
 }

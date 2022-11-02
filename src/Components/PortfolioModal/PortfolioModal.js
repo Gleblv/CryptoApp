@@ -22,8 +22,12 @@ const ProfileModal = (props) => {
         }
 
         getCoinById(props.coinId)
-        .then(coin => setCoinList(coinList => [...coinList, coin]))
+        .then(onCoinData)
         .then(addToLocalStorage);
+    }
+
+    const onCoinData = (data) => {
+        setCoinList(coinList => [...coinList, data]);
     }
 
     // useEffect(() => {
@@ -71,12 +75,10 @@ const ProfileModal = (props) => {
                     <tr key={item.id}>
                         <td>{item.name}</td>
                         <td>{item.symbol}</td>
-                        <td>{item.priceUsd}</td>
+                        <td>{parseFloat(item.priceUsd).toFixed(5)}</td>
                         <td><button onClick={() => {deleteCoin(item.id)}} className='delete-crypto'>—</button></td>
                     </tr>
                 )
-            } else {
-                return;
             }
         })
         
