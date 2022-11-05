@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import ProfileItem from '../ProfileItem/ProfileItem';
 import useCoinService from '../../services/CoinService';
@@ -18,6 +18,10 @@ const ProfileModal = ({coinId, coinCount, profileActive, profileVisible}) => {
         updateData();
     }, [coinCount])
 
+    useEffect(() => {
+        setCoinsData([...coinsData, ...getDataFromLocalStorage()]);
+    }, [])
+
     const updateData = () => {
         if (!coinId || !coinCount) {
             return
@@ -33,12 +37,28 @@ const ProfileModal = ({coinId, coinCount, profileActive, profileVisible}) => {
 
     const deleteCoin = (id) => {
         setCoinsData(coinsData => coinsData.filter(item => item.id !== id));
+        localStorage.removeItem(id);
+    }
+
+    const getDataFromLocalStorage = () => {
+        const dataFromLocalStorage = [];
+
+        for (let i = 0, length = localStorage.length; i < length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage[key];
+
+            dataFromLocalStorage.push({...JSON.parse(value), key});
+        }
+
+        return dataFromLocalStorage;
     }
 
     const getList = (arr) => {
         return !arr ? null :
             arr.map(item => {
                 const price = parseFloat(item.priceUsd) * parseFloat(item.count);
+
+                localStorage.setItem(item.id, JSON.stringify(item));
 
                 return (
                     <ProfileItem

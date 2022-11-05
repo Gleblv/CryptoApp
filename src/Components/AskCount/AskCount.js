@@ -22,12 +22,10 @@ const AskCount = ({askCountActive, askCountVisible, getCoinCount}) => {
     return (
         <div className={styles}>
             <div className="ask-modal-content">
-                <div className='ask-modal-header'>
-                    <div className='ask-title'>Count?</div>
-                    <span className="close" onClick={() => askCountVisible(false)}>&times;</span>
-                </div>
+                <span className="close" onClick={() => askCountVisible(false)}>&times;</span>
+                <div className='ask-title'>Count?</div>
                 <div className='ask-modal-body'>
-                    <input type='number' onChange={e => onChangeCount(e)}></input>
+                    <input className='ask-input' type='number' placeholder='Count' onChange={e => onChangeCount(e)}></input>
                     <button className='submitBtn' onClick={() => {getCoinCount(count); askCountVisible(false);}}>Submit</button>
                 </div>
             </div>
