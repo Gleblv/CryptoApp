@@ -6,7 +6,7 @@ import useCoinService from "../../services/CoinService";
 
 import './coinsList.css';
 
-const CoinsList = ({getSelectedCoin}) => {
+const CoinsList = ({getSelectedCoin, askCountVisible}) => {
 
     const {getCoinsList} = useCoinService();
 
@@ -26,7 +26,8 @@ const CoinsList = ({getSelectedCoin}) => {
                     name={item.name}
                     symbol={item.symbol}
                     price={parseFloat(item.priceUsd).toFixed(5)}
-                    getSelectedCoin={getSelectedCoin}/>
+                    getSelectedCoin={getSelectedCoin}
+                    askCountVisible={askCountVisible}/>
             )
         })
 

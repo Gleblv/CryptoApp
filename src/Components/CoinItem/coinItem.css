@@ -12,6 +12,20 @@
     align-items: center;
 }
 
+.coin-name {
+    width: 15%;
+}
+
+.coin-symbol {
+    width: 10%;
+    text-align: center;
+}
+
+.coin-price {
+    width: 15%;
+    text-align: center;
+}
+
 .control-buttons {
     display: flex;
     align-items: center;

@@ -121,7 +121,7 @@ const CoinInfo = ({coinId}) => {
 
     return (
         <div className='info-on-page'>
-            <div className='name-price-page'>{getNameOfCoin(coinData)}Price</div>
+            <div className='name-price-page'>{getNameOfCoin(coinData)} Price</div>
             <Line className='schedule' data={data} options={options}/>
             {infoOfCoin}
         </div>

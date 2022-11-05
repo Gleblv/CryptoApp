@@ -1,0 +1,59 @@
+/* Модальный (фон) */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Оставаться на месте */
+  z-index: 1; /* Сидеть на вершине */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включите прокрутку, если это необходимо */
+  background-color: rgb(0,0,0); /* Цвет запасной вариант */
+  background-color: rgba(0,0,0,0.4); /* Черный с непрозрачностью */
+}
+
+.visible {
+  display: block;
+}
+
+/* Модальное содержание/коробка */
+.profile-modal-content {
+  background-color: #0D1821;
+  color: #F1FFE7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 0.5em;
+  height: 70vh;
+  width: 70vw;
+  margin: 15% auto; /* 15% сверху и по центру */
+}
+
+.close-profile {
+  margin-left: auto;
+  height: 7.5%;
+  width: 2.5%;
+  text-align: center;
+}
+
+.close-profile:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.close-profile:active {
+  cursor: pointer;
+  color: rgb(172, 0, 0);
+}
+
+.profile-title {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5%;
+}
+
+.profile-item-list {
+  height: 100%;
+  width: 100%;
+}

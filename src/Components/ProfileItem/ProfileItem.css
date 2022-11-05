@@ -1,0 +1,55 @@
+.profile-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 1%;
+}
+
+.profile-item-count {
+    width: 5%;
+    text-align: center;
+}
+
+.profile-item-name {
+    width: 12.5%;
+    text-align: center;
+}
+
+.profile-item-symbol {
+    width: 7.5%;
+    text-align: center;
+}
+
+.profile-item-price {
+    width: 7.5%;
+    text-align: center;
+}
+
+.profile-control-buttons {
+    width: 15%;
+    text-align: center;
+}
+
+.profile-control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coin-delete-btn {
+    width: 70%;
+    height: 60%;
+    border-radius: 0.5em;
+    background-color: #157A6E;
+    color: #F1FFE7;
+}
+
+.coin-delete-btn:hover {
+    cursor: pointer;
+}
+
+.coin-delete-btn:active {
+    cursor: pointer;
+    background-color: #0e4e47;
+}

@@ -26,14 +26,13 @@ const useCoinService = () => {
     }
   }
 
-  const getCoinById = async (id) => {
+  const getCoinById = async (id, count = null) => {
     try {
       const res = await fetch(`https://api.coincap.io/v2/assets/${id}`);
       const data = await res.json();
 
       if (data !== undefined && data !== null) {
-        console.log(data.data);
-        return data.data;
+        return transormCoinData(data.data, count);
       }
     } catch {
       throw new Error("Error");
@@ -52,6 +51,14 @@ const useCoinService = () => {
       throw new Error("Error");
     }
   }
+
+  const transormCoinData = (data, count) => {
+    if (count !== null) {
+      return {...data, count};
+    } else {
+      return data;
+    }
+  } 
 
   return {getCommonCoins, getCoinsList, getCoinById, getCoinHistory};
 }
