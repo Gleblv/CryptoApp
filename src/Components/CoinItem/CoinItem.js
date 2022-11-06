@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './coinItem.css';
 
@@ -17,7 +17,7 @@ const CoinItem = ({id, name, symbol, price, getSelectedCoin, askCountVisible}) =
                 </div>
                 <div className='control-buttons'>
                     <button className='coin-add-btn' onClick={() => {getSelectedCoin(id); askCountVisible(true)}}>Add coin</button>
-                    <button className='to-page-btn' onClick={() => getSelectedCoin(id)}><Link to="/coin">To page</Link></button>
+                    <button className='to-page-btn' onClick={() => getSelectedCoin(id)}><NavLink className="link-to-page" activeStyle={{"color": "#F1FFE7"}} to="/coin">To page</NavLink></button>
                 </div>
             </div>
         </div>

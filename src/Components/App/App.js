@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import CommonCoins from '../CommonCoins/CommonCoins';
@@ -17,6 +17,12 @@ function App() {
   const [askCountActive, setAskCountActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
   const [coinCount, setCoinCount] = useState(null);
+  const [profileCost, setProfileCost] = useState(null);
+
+
+  useEffect(() => {
+    getProfileCost();
+  }, [coinCount])
 
   const getSelectedCoin = (id) => { // получаем id криптовалюты которую хотим добавить в profile из CoinList
     setSelectedCoinId(id);
@@ -34,13 +40,26 @@ function App() {
     setAskCountActive(status);
   }
 
+  const getProfileCost = () => {
+    let price = 0;
+
+    for (let i = 0, length = localStorage.length; i < length; i++) {
+      const key = localStorage.key(i);
+      const value = localStorage[key];
+
+      price += parseFloat(JSON.parse(value).priceUsd);
+    }
+
+    setProfileCost(price);
+  }
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <Button className='profile-button' onClick={() => profileVisible(true)} variant="outline-dark" size='lg'>Profile</Button>
           <CommonCoins/>
-          <Button className='difference' variant="outline-dark" size='lg'>Difference</Button>
+          <Button className='difference' variant="outline-dark" size='lg'>{profileCost ? `${profileCost.toFixed(2)}$` : "Difference"}</Button>
         </header>
         <main>
           <Switch>

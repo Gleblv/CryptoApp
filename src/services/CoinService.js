@@ -39,6 +39,19 @@ const useCoinService = () => {
     }
   }
 
+  const getCoinPrice = async (id, count) => {
+    try {
+      const res = await fetch(`https://api.coincap.io/v2/assets/${id}`);
+      const data = await res.json();
+
+      if (data !== undefined && data !== null) {
+        return (getCostFromData(data.data) * count);
+      }
+    } catch {
+      throw new Error("Error");
+    }
+  }
+
   const getCoinHistory = async (id) => {
     try {
       const res = await fetch(`https://api.coincap.io/v2/assets/${id}/history?interval=d1`);
@@ -52,6 +65,10 @@ const useCoinService = () => {
     }
   }
 
+  const getCostFromData = (data) => {
+    return (parseFloat(data.priceUsd));
+  }
+
   const transormCoinData = (data, count) => {
     if (count !== null) {
       return {...data, count};
@@ -60,7 +77,7 @@ const useCoinService = () => {
     }
   } 
 
-  return {getCommonCoins, getCoinsList, getCoinById, getCoinHistory};
+  return {getCommonCoins, getCoinsList, getCoinById, getCoinHistory, getCoinPrice};
 }
 
 export default useCoinService;
