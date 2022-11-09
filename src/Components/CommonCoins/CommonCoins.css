@@ -1,15 +1,19 @@
 .common-coins {
-    margin-bottom: auto;
-    margin-top: 3vh;
-    width: 40vw;
-    height: 20vh;
+    width: 35%;
+    height: 95%;
+    margin: auto;
+    margin-bottom: 2.5%;
     background-color: #0D1821;
-    border-radius: 0.5em;
-    box-shadow: 0px 0px ;
+    border-radius: 0.25em;
     display: flex;
     flex-direction: column;
     box-shadow: 10px 10px 30px rgb(163, 163, 163);
     padding: 5px;
+}
+
+.common-coins-title {
+    margin-bottom: 2%;
+    text-align: center;
 }
 
 .coin-list {
@@ -29,6 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-top: 0.5px solid #F1FFE7;
 }
 
 .logo {
@@ -43,4 +48,14 @@
 .title {
     margin-right: auto;
     margin-left: auto;
+}
+
+@media (max-width: 815px) {
+    .common-coins {
+        width: 30%;
+        font-size: 60%;
+    }
+    .coin-list {
+        flex-direction: column;
+    }
 }

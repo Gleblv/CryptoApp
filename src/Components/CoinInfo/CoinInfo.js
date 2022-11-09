@@ -12,6 +12,7 @@ import {
     Legend,
   } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { NavLink } from 'react-router-dom';
 
 import useCoinService from '../../services/CoinService';
 
@@ -124,6 +125,7 @@ const CoinInfo = ({coinId}) => {
             <div className='name-price-page'>{getNameOfCoin(coinData)} Price</div>
             <Line className='schedule' data={data} options={options}/>
             {infoOfCoin}
+            <div className='home-btn'><NavLink className='link-to-home' to="/">Go home</NavLink></div>
         </div>
     )
 }

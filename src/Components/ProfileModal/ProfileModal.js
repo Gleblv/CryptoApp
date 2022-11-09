@@ -6,7 +6,7 @@ import useCoinService from '../../services/CoinService';
 
 import './ProfileModal.css'
 
-const ProfileModal = ({coinId, coinCount, profileActive, profileVisible}) => {
+const ProfileModal = ({coinId, coinCount, profileActive, profileVisible, getProfileCost}) => {
     let styles = '';
     profileActive ? styles = 'modal visible' : styles = 'modal';
 
@@ -21,6 +21,10 @@ const ProfileModal = ({coinId, coinCount, profileActive, profileVisible}) => {
     useEffect(() => {
         setCoinsData([...coinsData, ...getDataFromLocalStorage()]);
     }, [])
+
+    useEffect(() => {
+        getProfileCost(ProfileCost());
+    }, [coinsData])
 
     const updateData = () => {
         if (!coinId || !coinCount) {
@@ -52,6 +56,20 @@ const ProfileModal = ({coinId, coinCount, profileActive, profileVisible}) => {
 
         return dataFromLocalStorage;
     }
+
+    const ProfileCost = () => {
+        let price = 0;
+    
+        for (let i = 0, length = localStorage.length; i < length; i++) {
+          const key = localStorage.key(i);
+          const value = localStorage[key];
+    
+          price += parseFloat(JSON.parse(value).priceUsd * JSON.parse(value).count);
+        }
+
+        return price;
+      }
+    
 
     const getList = (arr) => {
         return !arr ? null :

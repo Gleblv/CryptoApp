@@ -25,7 +25,7 @@ const CoinsList = ({getSelectedCoin, askCountVisible}) => {
                     id={item.id}
                     name={item.name}
                     symbol={item.symbol}
-                    price={parseFloat(item.priceUsd).toFixed(5)}
+                    price={parseFloat(item.priceUsd).toFixed(2)}
                     getSelectedCoin={getSelectedCoin}
                     askCountVisible={askCountVisible}/>
             )

@@ -43,6 +43,7 @@
     border-radius: 0.5em;
     background-color: #157A6E;
     color: #F1FFE7;
+    padding: 0 1%;
 }
 
 .coin-delete-btn:hover {
@@ -52,4 +53,11 @@
 .coin-delete-btn:active {
     cursor: pointer;
     background-color: #0e4e47;
+}
+
+@media (max-width: 815px) {
+    .coin-delete-btn {
+      font-size: 60%;
+      height: 100%;
+    }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import CommonCoins from '../CommonCoins/CommonCoins';
 import CoinList from '../CoinsList/CoinsList';
@@ -17,12 +17,7 @@ function App() {
   const [askCountActive, setAskCountActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
   const [coinCount, setCoinCount] = useState(null);
-  const [profileCost, setProfileCost] = useState(null);
-
-
-  useEffect(() => {
-    getProfileCost();
-  }, [coinCount])
+  const [profileCost, setProfileCost] = useState(0);
 
   const getSelectedCoin = (id) => { // получаем id криптовалюты которую хотим добавить в profile из CoinList
     setSelectedCoinId(id);
@@ -40,39 +35,24 @@ function App() {
     setAskCountActive(status);
   }
 
-  const getProfileCost = () => {
-    let price = 0;
-
-    for (let i = 0, length = localStorage.length; i < length; i++) {
-      const key = localStorage.key(i);
-      const value = localStorage[key];
-
-      price += parseFloat(JSON.parse(value).priceUsd);
-    }
-
-    setProfileCost(price);
+  const getProfileCost = (cost) => {
+    setProfileCost(cost);
   }
 
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
+        <div className='navigation'>
           <Button className='profile-button' onClick={() => profileVisible(true)} variant="outline-dark" size='lg'>Profile</Button>
-          <CommonCoins/>
-          <Button className='difference' variant="outline-dark" size='lg'>{profileCost ? `${profileCost.toFixed(2)}$` : "Difference"}</Button>
-        </header>
-        <main>
-          <Switch>
-            <Route exact path="/">
-              <CoinList getSelectedCoin={getSelectedCoin} askCountVisible={askCountVisible}/>
-              <AskCount askCountActive={askCountActive} askCountVisible={askCountVisible} getCoinCount={getCoinCount}/>
-            </Route>
-            <Route exact path="/coin">
-              <CoinInfo coinId={selectedCoinId}/>
-            </Route>
-          </Switch>
-          <ProfileModal profileActive={profileActive} profileVisible={profileVisible} coinId={selectedCoinId} coinCount={coinCount}/>
-        </main>
+          <Button className='difference' variant="outline-dark" size='lg'>{parseFloat(profileCost).toFixed(2)}$</Button>
+        </div>
+        <CommonCoins/>
+        <Routes>
+          <Route path="/" element={<CoinList getSelectedCoin={getSelectedCoin} askCountVisible={askCountVisible}/>}/>
+          <Route path="/:coinId" element={<CoinInfo coinId={selectedCoinId}/>}/>
+        </Routes>
+        <AskCount askCountActive={askCountActive} askCountVisible={askCountVisible} getCoinCount={getCoinCount}/>
+        <ProfileModal getProfileCost={getProfileCost} profileActive={profileActive} profileVisible={profileVisible} coinId={selectedCoinId} coinCount={coinCount}/>
       </div>
     </Router>
   );

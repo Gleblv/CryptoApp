@@ -1,38 +1,36 @@
 .info-on-page {
-    width: 50vw;
-    height: auto;
+    width: 60%;
     margin: auto;
-    padding-bottom: 1px;
     color: #0D1821;
 }
 
 .schedule {
     width: 100%;
-    height: 70%;
+    height: 60%;
+    margin-bottom: 3%;
 } 
 
 .name-price-page {
     text-align: center;
     width: 100%;
-    height: 5vh;
+    height: 5%;
     margin-bottom: 2.5vh;
 }
 
 .info-on-coin-page {
-    height: 5vh;
-    margin-top: 4vh;
-    margin-bottom: 7.5vh;
     display: flex;
     justify-content: space-around;
+    width: 100%;
+    margin-bottom: 3%;
 }
 
 .сharacteristic {
-    height: 10vh;
-    width: 12.5vw;
+    height: 100%;
+    width: 23.3%;
     border: 3px solid #0D1821;
     border-radius: 0.5em;
-    padding: 5px;
-    padding-top: 0px;
+    background-color: #0D1821;
+    color: #F1FFE7;
 }
 
 .labels {
@@ -42,4 +40,35 @@
 
 .values {
     text-align: center;
+}
+
+.home-btn {
+    width: 20%;
+    height: 15%;
+    margin: 0 auto;
+    margin-bottom: 2.5%;
+    text-align: center;
+    border-radius: 0.5em;
+    background-color: #157A6E;
+}
+
+.link-to-home {
+    color: #F1FFE7;
+}
+
+@media (max-width: 815px) {
+    .name-price-page {
+        font-size: 60%;
+    }
+    .schedule {
+        width: 120%;
+        height: 80%;
+        font-size: 60%;
+    }
+    .сharacteristic {
+        font-size: 60%;
+    }
+    .home-btn {
+        font-size: 60%;
+    }
 }
