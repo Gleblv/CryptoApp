@@ -1,5 +1,6 @@
 .info-on-page {
     width: 60%;
+    height: auto;
     margin: auto;
     color: #0D1821;
 }
@@ -46,7 +47,6 @@
     width: 20%;
     height: 15%;
     margin: 0 auto;
-    margin-bottom: 2.5%;
     text-align: center;
     border-radius: 0.5em;
     background-color: #157A6E;

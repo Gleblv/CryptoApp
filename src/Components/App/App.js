@@ -48,8 +48,8 @@ function App() {
         </div>
         <CommonCoins/>
         <Routes>
-          <Route path="/" element={<CoinList getSelectedCoin={getSelectedCoin} askCountVisible={askCountVisible}/>}/>
           <Route path="/:coinId" element={<CoinInfo coinId={selectedCoinId}/>}/>
+          <Route exect path="/" element={<CoinList getSelectedCoin={getSelectedCoin} askCountVisible={askCountVisible}/>}/>
         </Routes>
         <AskCount askCountActive={askCountActive} askCountVisible={askCountVisible} getCoinCount={getCoinCount}/>
         <ProfileModal getProfileCost={getProfileCost} profileActive={profileActive} profileVisible={profileVisible} coinId={selectedCoinId} coinCount={coinCount}/>
